@@ -30,22 +30,30 @@ export default function App() {
       content: window.prompt("Todo content"),
     });
   }
+    
+  function deleteTodo(id: string) {
+    client.models.Todo.delete({ id })
+  }
 
   return (
     <main>
+      <h1>Kerem Caner Özin | Full Stack Developer</h1>
       <h1>My todos</h1>
       <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
-        ))}
-      </ul>
+            <ul>
+        {todos.map(todo => <li
+
+          onClick={() => deleteTodo(todo.id)}
+          key={todo.id}>
+          {todo.content}
+        </li>)}
+      </ul> 
       <div>
-        🥳 App successfully hosted. Try creating a new todo.
+        🥳 App successfully hosted.
         <br />
-        <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
-          Review next steps of this tutorial.
-        </a>
+        Try creating a new todo.
+        <br />
+         Remove the item by clicking on it. 
       </div>
     </main>
   );
